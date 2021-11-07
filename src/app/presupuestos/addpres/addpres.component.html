@@ -1,0 +1,121 @@
+<div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset 2">
+    <h2>Añadir nuevo presupuesto</h2>
+    <a class="btn btn-primary float-md-right"
+    routerLink="/presupuestos">Regresar al listado</a>
+    <br> 
+    <form [formGroup]="presupuestoForm" (ngSubmit)="onSubmit()">
+
+
+    <div class="form-group">
+
+        <label for="proveedor">Proveedor</label>
+        <i class="fa fa-check-circle check"
+        *ngIf="presupuestoForm.controls.proveedor.valid"></i>
+        <i class="fa fa-exclamation-circle uncheck"
+        *ngIf="presupuestoForm.controls.proveedor.invalid &&
+        presupuestoForm.controls.proveedor.touched"></i>
+        <input type="text"
+        class="form-control"
+       id="proveedor"
+        formControlName="proveedor">
+        <p class="alert alert-danger"
+        *ngIf="presupuestoForm.controls.proveedor.invalid &&
+        presupuestoForm.controls.proveedor.touched">
+        El campo Proveedor es obligatorio.
+        </p>
+
+    </div>
+
+    <div class="form-group">
+        <label for="fecha">Fecha Presupuesto</label>
+        <input type="date"
+        class="form-control"
+        id="fecha"
+        formControlName="fecha">
+        </div>
+
+        <div class="form-group">
+
+            <label for="proveedor">Cif</label>
+            <input type="text"
+            class="form-control"
+            id="proveedor"
+            formControlName="cif">
+            </div>
+
+        <div class="form-group">
+        <label for="concepto">Concepto</label>
+        <input type="text"
+        class="form-control"
+        id="concepto"
+        formControlName="concepto">
+        </div>
+
+        <div class="form-group">
+        <label for="base">Base Imponible</label>
+        <input type="number"
+        class="form-control"
+        id="base"
+        formControlName="base">
+        </div>
+
+        <div class="form-group">
+        <label for="tipo">Tipo de IVA</label>
+        <select class="form-control"
+        id="tipo"
+        formControlName="tipo">
+        <option value="">Seleccione...</option>
+        <option value=0> 0 %</option>
+        <option value=0.04> 4 %</option>
+        <option value=0.10>10 %</option>
+        <option value=0.21>21 %</option>
+        </select>
+        </div>
+
+        <div class="form-group">
+            <label for="iva">Importe IVA</label>
+            <input type="number"
+            class="form-control"
+            id="iva"
+            formControlName="iva"
+            [(ngModel)]="presupuestoForm.value.iva" 
+            readonly
+            > 
+            </div>
+
+        <div class="form-group">
+                <label for="total">Total Factura IVA Incluido</label>
+                <input type="number"
+                class="form-control"
+                id="total"
+                formControlName="total"
+                [(ngModel)]="presupuestoForm.value.total"
+                readonly
+                
+                >
+         </div>
+
+
+
+         <button class="btn btn-primary" type="submit"
+          [hidden]="!presupuestoForm.valid" >
+          Añadir Presupuesto</button>
+          
+          <a class="btn btn-danger" routerLink="/presupuestos">Cancelar</a>
+
+
+ <p class="alert alert-danger" *ngIf="!presupuestoForm.valid">
+ Por favor complete todos los campos
+ </p>
+
+
+ </form>
+ <hr>
+ <pre>Valor del formulario: {{ presupuestoForm.value | json }}</pre>
+ <pre>Status del formulario: {{ presupuestoForm.status | json }}</pre>
+ <hr>
+ <pre>{{ presupuesto | json }}</pre>
+ </div>
+</div>
+       

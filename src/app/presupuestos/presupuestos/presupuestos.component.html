@@ -1,0 +1,41 @@
+<h3>Listado de Presupuestos</h3>
+<a class="btn btn-primary float-md-right" routerLink="/addpres">Añadir
+nuevo presupuesto</a>
+<br>
+<table class="table table-bordered table-striped tabla" style="margin-top:
+40px;">
+ <thead>
+ <tr class="filters">
+ <th>Proveedor</th>
+ <th>Fecha</th>
+ <th>Cif</th>
+ <th>Concepto</th>
+ <th>Base</th>
+ <th>IVA</th>
+ <th>Total</th>
+ <th>Editar</th>
+ <th>Eliminar</th>
+ 
+ </tr>
+ </thead>
+ <tbody>
+ <tr *ngFor="let p of presupuestos">
+ <td>{{ p.proveedor }}</td>
+ <td>{{ p.fecha }}</td>
+ <td>{{ p.cif }}</td>
+
+ <td>{{ p.concepto }}</td>
+ <td>{{ p.base }}</td>
+ <td>{{ p.iva }}</td>
+ <td>{{ p.total }}</td>
+ <td>
+    <button type="button" class="btn btn-success"
+    routerLink="/editpres/{{ p.id$ }}">Editar</button>
+    </td>
+    <td>
+        <button class="btn btn-danger"
+        (click)="eliminarPresupuesto(p.id$)">Eliminar</button>
+        </td>
+ </tr>
+ </tbody>
+</table>

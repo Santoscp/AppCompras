@@ -1,0 +1,123 @@
+
+<div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset 2">
+    <h2>Añadir nuevo proveedor</h2>
+    <a class="btn btn-primary float-md-right"
+    routerLink="/proveedores">Regresar al listado</a>
+    <br> 
+    <form [formGroup]="proveedoresForm" (ngSubmit)="onSubmit()">
+ 
+ 
+       <div class="form-group">
+          <label for="nombre">nombre</label>
+          <input type="text"
+          class="form-control"
+          id="nombre"
+          formControlName="nombre"
+          [(ngModel)]="proveedor.nombre"> 
+          </div>
+ 
+    <div class="form-group">
+        <label for="cif">Cif</label>
+        <input type="text"
+        class="form-control"
+        id="cif"
+        formControlName="cif"
+        [(ngModel)]="proveedor.cif">
+        </div>
+ 
+        <div class="form-group">
+ 
+            <label for="direccion">direccion</label>
+            <input type="text"
+            class="form-control"
+            id="direccion"
+            formControlName="direccion"
+            [(ngModel)]="proveedor.direccion">
+            </div>
+ 
+        <div class="form-group">
+        <label for="cp">codigo postal</label>
+        <input type="text"
+        class="form-control"
+        id="cp"
+        formControlName="cp"
+        [(ngModel)]="proveedor.cp">
+        </div>
+ 
+        <div class="form-group">
+        <label for="localidad">localidad</label>
+        <input type="text"
+        class="form-control"
+        id="localidad"
+        formControlName="localidad"
+        [(ngModel)]="proveedor.localidad">
+        </div>
+ 
+        <div class="form-group">
+         <label for="provincias">Provincia</label>
+         <select class="form-control"
+         id="provincias"
+         
+         formControlName="provincias"
+         [(ngModel)]="proveedor.provincias"
+         >
+         <option value="">Seleccione la provincia</option>
+         <option *ngFor="let provincia of provincias"
+         [value]="provincia">{{provincia}} </option>
+         </select>
+        </div>
+ 
+          <div class="form-group">
+             <label for="email">email</label>
+             <input type="text"
+             class="form-control"
+             id="email"
+             formControlName="email"
+             [(ngModel)]="proveedor.email">
+             </div>
+ 
+             <div class="form-group">
+                <label for="telefono">telefono</label>
+                <input type="number"
+                class="form-control"
+                id="telefono"
+                formControlName="telefono"
+                [(ngModel)]="proveedor.telefono">
+                </div>
+ 
+             <div class="form-group">
+                <label for="contactos">contacto</label>
+                <input type="text"
+                class="form-control"
+                id="contactos"
+                formControlName="contactos"
+                [(ngModel)]="proveedor.contactos">
+                </div>
+ 
+       
+ 
+        
+ 
+       
+ 
+ 
+ 
+         <button class="btn btn-primary" type="submit"
+          [hidden]="!proveedoresForm.valid" >
+          Añadir Presupuesto</button>
+          
+          <a class="btn btn-danger" routerLink="/presupuestos">Cancelar</a>
+ 
+ 
+ <p class="alert alert-danger" *ngIf="!proveedoresForm.valid">
+ Por favor complete todos los campos
+ </p>
+ 
+ 
+ </form>
+ <hr>
+ <hr>
+ <pre>{{ proveedor | json }}</pre>
+ </div>
+ </div>

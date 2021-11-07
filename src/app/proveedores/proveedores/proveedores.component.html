@@ -1,0 +1,49 @@
+<h3>Proveedores</h3>
+<a class="btn btn-primary float-md-right" routerLink="/addprovee">Añadir
+    nuevo proveedor</a>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Cif</th>
+        <th scope="col">Direccion</th>
+        <th scope="col">Codigo postal</th>
+        <th scope="col">Localidad</th>
+        <th scope="col">Provincia</th>
+        <th scope="col">Correo electronico</th>
+        <th scope="col">Telefono</th>
+        <th scope="col">Contacto</th>
+        <th>Editar</th>
+        <th>Eliminar</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="puntero" *ngFor="let proveedor of this.proveedores; index as i" 
+          >
+        <th scope="row">{{proveedor.nombre}}</th>
+        <th scope="row">{{proveedor.cif}}</th>
+        <th scope="row">{{proveedor.direccion}}</th>
+        <th scope="row">{{proveedor.cp}}</th>
+        <th scope="row">{{proveedor.localidad}}</th>
+        <th scope="row">{{proveedor.provincias}}</th>
+        <th><a href="mailto:{{ proveedor.email }}">{{ proveedor.email }}</a></th>
+        <th>{{proveedor.telefono}}</th>
+        <th scope="row">{{proveedor.contactos}}</th>
+        <td>
+          <button type="button" class="btn btn-success"
+          routerLink="/editpro/{{ proveedor.id$ }}">Editar</button>
+          </td>
+          <td>
+              <button class="btn btn-danger"
+              (click)="eliminarProovedor(proveedor.id$)">Eliminar</button>
+              </td>
+        
+      </tr>
+    
+      
+    </tbody>
+  </table>
+
+  
+  
